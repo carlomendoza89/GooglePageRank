@@ -184,7 +184,58 @@ matrix& matrix::operator=(matrix other)
     return *this;
 }
 
+matrix& matrix::operator+=(const matrix &rhs)
+{
+    if(rows != rhs.rows || cols != rhs.cols)
+    {
+        throw "can only add matrices of same size";
+    }
 
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < cols; j++)
+        {
+            data[i][j] += rhs.data[i][j];
+        }
+    }
+}
+
+matrix& matrix::operator-=(const matrix &rhs)
+{
+    if(rows != rhs.rows || cols != rhs.cols)
+    {
+        throw "can only subtract matrices of same size";
+    }
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < cols; j++)
+        {
+            data[i][j] -= rhs.data[i][j];
+        }
+    }
+}
+
+matrix operator+(matrix lhs, const matrix rhs)
+{
+    if(lhs.rows != rhs.rows || lhs.cols != rhs.cols)
+    {
+        throw "can only add matrices of same size";
+    }
+    lhs += rhs;
+
+    return lhs;
+}
+
+matrix operator-(matrix lhs, const matrix rhs)
+{
+    if(lhs.rows != rhs.rows || lhs.cols != rhs.cols)
+    {
+        throw "can only subtract matrices of same size";
+    }
+    lhs -= rhs;
+
+    return lhs;
+}
 
 //matrix::matrix() : rows{1}, cols{1}, default_value{0.0}, data{new double[rows*cols]}
 //{

@@ -158,4 +158,12 @@ public:
      * @return newly swapped matrix
      */
     matrix& operator=(matrix other);
+
+    matrix& operator+=(const matrix &rhs);
+
+    matrix& operator-=(const matrix &rhs);
+
+    friend matrix operator+(matrix lhs, const matrix rhs);
+
+    friend matrix operator-(matrix lhs, const matrix rhs);
 };

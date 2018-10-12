@@ -37,22 +37,44 @@ int main() {
         cout << "no match =(" << "\n" << endl;
     }
 
+    cout << "test ++matrix" << endl;
     ++(*b);
     cout << *b;
 
+    cout << "test matrix++" << endl;
     (*c)++;
     cout << *c;
 
+    cout << "test --matrix" << endl;
     --(*b);
     cout << *b;
 
+    cout << "test matrix--" << endl;
     (*c)--;
     cout << *c;
 
+    cout << "test = operator" << endl;
     *a = *e;
 
     cout << *a;
     cout << *e;
+
+    cout << "test += operator" << endl;
+    *a += *e;
+
+    cout << *a;
+    cout << *e;
+
+    cout << "test -= operator" << endl;
+    *a -= *e;
+
+    cout << *a;
+    cout << *e;
+
+    cout << "test + operator" << endl;
+    cout << *a + *e;
+    cout << "test - operator" << endl;
+    cout << *a - *e;
 
     return 0;
 }
