@@ -11,6 +11,7 @@ class matrix
 private:
     int rows, cols;
     double default_value;
+//    double *data;
     std::vector<std::vector<double>> data;
 public:
     /**
@@ -47,8 +48,9 @@ public:
       * Throw an exception if the size of the array does not have an integer square root
       *
       * @param array the array of values to populate matrix
+      * @param size the size of the array
       */
-     matrix(double array[]);
+     matrix(double *array, int size);
 
      /**
       * Matrix mutator that accepts two integers representing row and column and a double
@@ -98,4 +100,12 @@ public:
       * @return output to print
       */
      friend std::ostream& operator<<(std::ostream& os, const matrix& m);
+
+     friend bool operator==(const matrix &lhs, const matrix &rhs);
+
+     friend bool operator!=(const matrix &lhs, const matrix &rhs);
+
+     matrix& operator++();
+
+     matrix operator++(int);
 };
