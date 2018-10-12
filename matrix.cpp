@@ -99,10 +99,11 @@ ostream& matrix::output(ostream &os) const
     {
         for(vector<double>::size_type j = 0; j < data[i].size(); j++)
         {
-            os << data.at(i).at(j);
+            os << data.at(i).at(j) << " ";
         }
         os << endl;
     }
+    os << endl;
 }
 
 ostream& operator<<(ostream& os, const matrix& m) {
@@ -168,6 +169,22 @@ matrix matrix::operator--(int)
     operator--();
     return tmp;
 }
+
+void swap(matrix& first, matrix& second)
+{
+    using std::swap;
+    swap(first.rows, second.rows);
+    swap(first.cols, second.cols);
+    swap(first.data, second.data);
+}
+
+matrix& matrix::operator=(matrix other)
+{
+    swap(*this, other);
+    return *this;
+}
+
+
 
 //matrix::matrix() : rows{1}, cols{1}, default_value{0.0}, data{new double[rows*cols]}
 //{

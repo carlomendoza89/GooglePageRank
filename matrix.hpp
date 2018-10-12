@@ -142,4 +142,20 @@ public:
      * @return the matrix with decremented values
      */
     matrix operator--(int);
+
+    /**
+     * Swaps matrix attributes with another matrix
+     *
+     * @param first matrix to swap
+     * @param second matrix to be swapped with
+     */
+    friend void swap(matrix& first, matrix& second);
+
+    /**
+     * Assignment operator to apply swap
+     *
+     * @param other matrix to swap with
+     * @return newly swapped matrix
+     */
+    matrix& operator=(matrix other);
 };
