@@ -101,11 +101,45 @@ public:
       */
      friend std::ostream& operator<<(std::ostream& os, const matrix& m);
 
+     /**
+      * check if the matrices are the same size and contain the same values in the same locations.
+      *
+      * @param lhs first matrix to check
+      * @param rhs second matrix to check
+      * @return whether lhs and rhs are equal
+      */
      friend bool operator==(const matrix &lhs, const matrix &rhs);
 
+     /**
+      * If the matrices are not the same size, and they do not contain the same values, they are not equal
+      *
+      * @param lhs first matrix to check
+      * @param rhs second matrix to check
+      * @return whether lhs and rhs are not equal
+      */
      friend bool operator!=(const matrix &lhs, const matrix &rhs);
 
+     /**
+      * Unary prefix increment. Increments each value in the matrix by 1.0
+      * @return the matrix with incremented values
+      */
      matrix& operator++();
 
+     /**
+      * Unary postfix increment. Increments each value in the matrix by 1.0
+      * @return the matrix with incremented values
+      */
      matrix operator++(int);
+
+    /**
+     * Unary prefix decrement. Decrements each value in the matrix by 1.0
+     * @return the matrix with decremented values
+     */
+    matrix& operator--();
+
+    /**
+     * Unary postfix decrement. Decrements each value in the matrix by 1.0
+     * @return the matrix with decremented values
+     */
+    matrix operator--(int);
 };

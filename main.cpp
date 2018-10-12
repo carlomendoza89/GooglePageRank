@@ -40,11 +40,17 @@ int main() {
         cout << "no match =("<<endl;
     }
 
-//    *mat_b++;
-//    cout << *mat_b;
-//
-//    ++(*mat_c);
-//    cout << *mat_c;
+    ++(*mat_b);
+    cout << *mat_b;
+
+    (*mat_c)++;
+    cout << *mat_c;
+
+    --(*mat_b);
+    cout << *mat_b;
+
+    (*mat_c)--;
+    cout << *mat_c;
 
 
 

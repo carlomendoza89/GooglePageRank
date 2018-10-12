@@ -142,13 +142,32 @@ matrix& matrix::operator++()
     }
     return *this;
 }
-matrix matrix::operator++(int) const
+
+matrix matrix::operator++(int)
 {
     matrix tmp(*this);
     operator++();
     return tmp;
 }
 
+matrix& matrix::operator--()
+{
+    for(int i = 0; i < rows; ++i)
+    {
+        for(int j = 0; j < cols; ++j)
+        {
+            set_value(i, j, get_value(i, j) - 1.0);
+        }
+    }
+    return *this;
+}
+
+matrix matrix::operator--(int)
+{
+    matrix tmp(*this);
+    operator--();
+    return tmp;
+}
 
 //matrix::matrix() : rows{1}, cols{1}, default_value{0.0}, data{new double[rows*cols]}
 //{
