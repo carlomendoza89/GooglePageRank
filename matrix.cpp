@@ -190,12 +190,14 @@ matrix& matrix::operator+=(const matrix &rhs)
     {
         throw "can only add matrices of same size";
     }
-
-    for(int i = 0; i < rows; i++)
+    else
     {
-        for(int j = 0; j < cols; j++)
+        for(int i = 0; i < rows; i++)
         {
-            data[i][j] += rhs.data[i][j];
+            for(int j = 0; j < cols; j++)
+            {
+                data[i][j] += rhs.data[i][j];
+            }
         }
     }
     return *this;
@@ -207,11 +209,14 @@ matrix& matrix::operator-=(const matrix &rhs)
     {
         throw "can only subtract matrices of same size";
     }
-    for(int i = 0; i < rows; i++)
+    else
     {
-        for(int j = 0; j < cols; j++)
+        for(int i = 0; i < rows; i++)
         {
-            data[i][j] -= rhs.data[i][j];
+            for(int j = 0; j < cols; j++)
+            {
+                data[i][j] -= rhs.data[i][j];
+            }
         }
     }
     return *this;
@@ -223,8 +228,10 @@ matrix operator+(matrix lhs, const matrix rhs)
     {
         throw "can only add matrices of same size";
     }
-    lhs += rhs;
-
+    else
+    {
+        lhs += rhs;
+    }
     return lhs;
 }
 
@@ -234,7 +241,46 @@ matrix operator-(matrix lhs, const matrix rhs)
     {
         throw "can only subtract matrices of same size";
     }
-    lhs -= rhs;
+    else
+    {
+        lhs -= rhs;
+    }
+    return lhs;
+}
 
+matrix& matrix::operator*=(const matrix &rhs)
+{
+    if(cols != rhs.rows)
+    {
+        throw "number of columns is not equal to number of rows of second matrix";
+    }
+    else
+    {
+        matrix *tmp = new matrix(rows, rhs.cols);
+        for(int i = 0; i < rows; ++i)
+        {
+            for(int j = 0; j < rhs.cols; ++j)
+            {
+                for(int k = 0; k < cols; ++k)
+                {
+                    tmp->data[i][j] += data[i][k] * rhs.data[k][j];
+                }
+            }
+        }
+        *this = *tmp;
+    }
+    return *this;
+}
+
+matrix operator*(matrix lhs, const matrix rhs)
+{
+    if(lhs.cols != rhs.rows)
+    {
+        throw "number of columns of first matrix is not equal to number of rows of second matrix";
+    }
+    else
+    {
+        lhs *= rhs;
+    }
     return lhs;
 }

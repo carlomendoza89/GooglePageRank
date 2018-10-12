@@ -192,4 +192,21 @@ public:
      * @return lhs with new values
      */
     friend matrix operator-(matrix lhs, const matrix rhs);
+
+    /**
+     * Multiplies data by values from another matrix
+     *
+     * @param rhs matrix to be multiplied by
+     * @return matrix with new data values
+     */
+    matrix& operator*=(const matrix &rhs);
+
+    /**
+     * Mutliplies data values of one matrix by another
+     *
+     * @param lhs first matrix
+     * @param rhs matrix to multiply by
+     * @return lhs with new values
+     */
+    friend matrix operator*(matrix lhs, const matrix rhs);
 };
