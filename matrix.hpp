@@ -159,11 +159,37 @@ public:
      */
     matrix& operator=(matrix other);
 
+    /**
+     * Adds data values from another matrix
+     *
+     * @param rhs matrix to be added
+     * @return matrix with new data values
+     */
     matrix& operator+=(const matrix &rhs);
 
+    /**
+     * Subtracts data values from another matrix
+     *
+     * @param rhs matrix to be subtracted
+     * @return matrix with new data values
+     */
     matrix& operator-=(const matrix &rhs);
 
+    /**
+     * Adds data values of one matrix to another
+     *
+     * @param lhs first matrix
+     * @param rhs matrix to add
+     * @return lhs with new values
+     */
     friend matrix operator+(matrix lhs, const matrix rhs);
 
+    /**
+     * Subtracts data values of one matrix from another
+     *
+     * @param lhs first matrix
+     * @param rhs matrix to subtract
+     * @return lhs with new values
+     */
     friend matrix operator-(matrix lhs, const matrix rhs);
 };

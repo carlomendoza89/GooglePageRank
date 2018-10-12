@@ -198,6 +198,7 @@ matrix& matrix::operator+=(const matrix &rhs)
             data[i][j] += rhs.data[i][j];
         }
     }
+    return *this;
 }
 
 matrix& matrix::operator-=(const matrix &rhs)
@@ -213,6 +214,7 @@ matrix& matrix::operator-=(const matrix &rhs)
             data[i][j] -= rhs.data[i][j];
         }
     }
+    return *this;
 }
 
 matrix operator+(matrix lhs, const matrix rhs)
@@ -236,92 +238,3 @@ matrix operator-(matrix lhs, const matrix rhs)
 
     return lhs;
 }
-
-//matrix::matrix() : rows{1}, cols{1}, default_value{0.0}, data{new double[rows*cols]}
-//{
-//    cout << "matrix default constructor called" << endl;
-////    data = new double[rows*cols];
-//}
-//
-//matrix::matrix(int n) : rows {n}, cols{n}, default_value{0.0}, data{new double[rows*cols]}
-//{
-//    cout << "matrix square constructor called" << endl;
-//
-//    if(n <= 0)
-//    {
-//        throw out_of_range("Matrix size too small.  Choose a number greater than 0");
-////    } else
-////    {
-////        data = new double[rows*cols];
-//    }
-//}
-//
-//matrix::matrix(int r, int c) : rows{r}, cols{c}, default_value{0.0}, data{new double[rows*cols]}
-//{
-//    cout << "matrix row and column constructor called" << endl;
-//
-//    if(r <= 0)
-//    {
-//        throw out_of_range("Row size too small.  Choose a number greater than 0");
-//    }
-//    else if(c <= 0)
-//    {
-//        throw "Column size too small.  Choose a number greater than 0";
-////    } else
-////    {
-////        data = new double[rows*cols];
-//    }
-//}
-//
-//matrix::matrix(double *array, int size)
-//{
-//    cout << "matrix array constructor called" << endl;
-//
-//    if(sqrt(size) - floor(sqrt(size)) != 0)
-//    {
-//        throw out_of_range("Size of array must have an integer square root");
-//    }
-//    else
-//    {
-//        data = array;
-//    }
-//}
-//
-//void matrix::set_value(int r, int c, double val)
-//{
-//    data[r * c + c] = val;
-//}
-//
-//double matrix::get_value(int r, int c)
-//{
-//    return data[r * c + c];
-//}
-//
-//matrix::~matrix()
-//{
-//    cout << "Matrix destructor called" << endl;
-//}
-//
-//void matrix::clear()
-//{
-//    delete[] data;
-//    data = new double[rows*cols];
-//}
-//
-//ostream& matrix::output(ostream &os) const
-//{
-//    int count  = 0;
-//    for(int i = 0; i < rows; ++i)
-//    {
-//        for(int j = 0; j < cols; ++j)
-//        {
-//            os << data[count];
-//            ++count;
-//        }
-//        os << endl;
-//    }
-//}
-//
-//ostream& operator<<(ostream& os, const matrix& m) {
-//    return m.output(os);
-//}
