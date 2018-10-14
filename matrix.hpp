@@ -6,12 +6,12 @@
 #include<iostream>
 #include <vector>
 
+constexpr double default_value = 0.0;
+
 class matrix
 {
 private:
     int rows, cols;
-    double default_value;
-//    double *data;
     std::vector<std::vector<double>> data;
 public:
     /**

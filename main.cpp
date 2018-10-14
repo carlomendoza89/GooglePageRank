@@ -7,6 +7,10 @@ int main() {
 
     double mat[4] = {11.1, 22.2, 33.3, 44.4};
 
+//    matrix *x = new matrix(-1, 13);
+//
+//    cout << *x;
+
     matrix *a = new matrix();
     matrix *b = new matrix(3);
     matrix *c = new matrix(2, 4);

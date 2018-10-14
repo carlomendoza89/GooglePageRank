@@ -3,26 +3,30 @@
 //
 
 #include "matrix.hpp"
-#include <array>
 #include <ctgmath>
 
 using namespace std;
 
-matrix::matrix() : rows{1}, cols{1}, default_value{0.0}, data(rows, vector<double>(cols, default_value))
+matrix::matrix() : rows{1}, cols{1}, data(rows, vector<double>(cols, default_value))
 {
     cout << "matrix default constructor called" << endl;
 }
 
-matrix::matrix(int n) : rows {n}, cols{n}, default_value{0.0}, data(rows, vector<double>(cols, default_value))
+matrix::matrix(int n) : rows {n}, cols{n}
 {
     cout << "matrix square constructor called" << endl;
     if(n <= 0)
     {
         throw "Matrix size too small. Choose a number greater than 0";
     }
+    data.resize(n);
+    for(int row = 0; row < n; row++)
+    {
+        data.at(row).resize(n);
+    }
 }
 
-matrix::matrix(int r, int c) : rows{r}, cols{c}, default_value{0.0}, data(rows, vector<double>(cols, default_value))
+matrix::matrix(int r, int c) : rows{r}, cols{c}
 {
     cout << "matrix row and column constructor called" << endl;
 
@@ -34,13 +38,18 @@ matrix::matrix(int r, int c) : rows{r}, cols{c}, default_value{0.0}, data(rows, 
     {
         throw "Column size too small. Choose a number greater than 0";
     }
+    data.resize(r);
+    for(int row = 0; row < r; row++)
+    {
+        data.at(row).resize(c);
+    }
 }
 
-matrix::matrix(double* array, int size): rows{1}, cols{1}, default_value{0.0}, data(rows, vector<double>(cols, default_value))
+matrix::matrix(double* array, int size): rows{1}, cols{1}
 {
     cout << "matrix array constructor called" << endl;
 
-    int root = sqrt(size);
+    double root = sqrt(size);
 
     if(root - floor(sqrt(size)) != 0)
     {
@@ -104,6 +113,7 @@ ostream& matrix::output(ostream &os) const
         os << endl;
     }
     os << endl;
+    return os;
 }
 
 ostream& operator<<(ostream& os, const matrix& m) {
