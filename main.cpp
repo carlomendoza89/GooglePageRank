@@ -1,5 +1,6 @@
 #include <iostream>
 #include "matrix.hpp"
+#include "connectivity_matrix.hpp"
 
 using namespace std;
 
@@ -109,6 +110,21 @@ int main() {
     cout << "test * operator" << endl;
     cout << *f * *d;
 
+    double mat_3[4] = {1, 0, 1, 0};
+
+    connectivity_matrix *h = new connectivity_matrix;
+    connectivity_matrix *i = new connectivity_matrix(4);
+    connectivity_matrix *j = new connectivity_matrix(4, 6);
+    connectivity_matrix *k = new connectivity_matrix(mat_3, 4);
+
+    cout << *h;
+    cout << *i;
+    cout << *j;
+    cout << *k;
+
+    h->set_value(0, 0, 1);
+
+    cout << h->get_value(0, 0);
 
     return 0;
 }

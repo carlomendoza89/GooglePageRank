@@ -45,7 +45,7 @@ matrix::matrix(int r, int c) : rows{r}, cols{c}
     }
 }
 
-matrix::matrix(double* array, int size): rows{1}, cols{1}
+matrix::matrix(double* array, int size)
 {
     cout << "matrix array constructor called" << endl;
 
@@ -79,12 +79,23 @@ matrix::matrix(double* array, int size): rows{1}, cols{1}
 
 void matrix::set_value(int r, int c, double val)
 {
-    data.at(r).at(c) = val;
+    if(r < 0 || r > rows)
+    {
+        throw "Row does not exist";
+    }
+    else if(c < 0 || c > cols)
+    {
+        throw "Column does not exist";
+    }
+    else
+    {
+        data[r][c] = val;
+    }
 }
 
 double matrix::get_value(int r, int c)
 {
-    return data.at(r).at(c);
+    return data[r][c];
 }
 
 matrix::~matrix()
@@ -108,7 +119,7 @@ ostream& matrix::output(ostream &os) const
     {
         for(vector<double>::size_type j = 0; j < data[i].size(); j++)
         {
-            os << data.at(i).at(j) << " ";
+            os << data[i][j] << " ";
         }
         os << endl;
     }

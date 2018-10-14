@@ -10,7 +10,7 @@ constexpr double default_value = 0.0;
 
 class matrix
 {
-private:
+protected:
     int rows, cols;
     std::vector<std::vector<double>> data;
 public:
@@ -62,7 +62,7 @@ public:
       * @param c selected column
       * @param val new value to set
       */
-     void set_value(int r, int c, double val);
+     virtual void set_value(int r, int c, double val);
 
      /**
       * Matrix accessor that accepts two integers representing row and column and
