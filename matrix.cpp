@@ -45,7 +45,7 @@ matrix::matrix(int r, int c) : rows{r}, cols{c}
     }
 }
 
-matrix::matrix(double* array, int size)
+matrix::matrix(double array[], int size)
 {
     cout << "matrix array constructor called" << endl;
 
@@ -119,7 +119,7 @@ ostream& matrix::output(ostream &os) const
     {
         for(vector<double>::size_type j = 0; j < data[i].size(); j++)
         {
-            os << data[i][j] << " ";
+            os << right << data[i][j] << " ";
         }
         os << endl;
     }

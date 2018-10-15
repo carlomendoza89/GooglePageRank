@@ -50,7 +50,7 @@ public:
       * @param array the array of values to populate matrix
       * @param size the size of the array
       */
-     matrix(double *array, int size);
+     matrix(double array[], int size);
 
      /**
       * Matrix mutator that accepts two integers representing row and column and a double

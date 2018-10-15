@@ -8,8 +8,6 @@
 
 class connectivity_matrix : public matrix
 {
-private:
-//    double importance;
 public:
     /**
      * Default constructor which initializes a square 1 x 1 connectivity matrix that contains a 0.0
@@ -47,7 +45,7 @@ public:
       * @param array the array of values to populate connectivity matrix
       * @param size the size of the array
       */
-    connectivity_matrix(double *array, int size);
+    connectivity_matrix(double array[], int size);
 
     /**
       * Destructor
@@ -65,4 +63,9 @@ public:
       * @param val new value to set
       */
     void set_value(int r, int c, double val);
+
+    double get_in_degree(int row);
+    double get_out_degree(int col);
+
+
 };

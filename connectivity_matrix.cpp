@@ -19,7 +19,7 @@ connectivity_matrix::connectivity_matrix(int n) : matrix(n)
 
 connectivity_matrix::connectivity_matrix(int r, int c) : matrix(r, c)
 {
-    cout << "matrix row and column constructor called" << endl;
+    cout << "connectivity matrix row and column constructor called" << endl;
 
     if(r <= 0)
     {
@@ -36,7 +36,7 @@ connectivity_matrix::connectivity_matrix(int r, int c) : matrix(r, c)
     }
 }
 
-connectivity_matrix::connectivity_matrix(double *array, int size) : matrix(*array, size)
+connectivity_matrix::connectivity_matrix(double array[], int size) : matrix(array, size)
 {
     cout << "connectivity matrix array constructor called" << endl;
 
@@ -81,8 +81,7 @@ void connectivity_matrix::set_value(int r, int c, double val)
     {
         throw "Connectivity matrix can only contain 1s and 0s";
     }
-
-    if(r < 0 || r > rows)
+    else if(r < 0 || r > rows)
     {
         throw "Row does not exist";
     }
@@ -94,4 +93,31 @@ void connectivity_matrix::set_value(int r, int c, double val)
     {
         data[r][c] = val;
     }
+}
+
+connectivity_matrix::~connectivity_matrix()
+{
+    cout << "Connectivity matrix destructor called" << endl;
+}
+
+double connectivity_matrix::get_in_degree(int row)
+{
+    double in_degree = 0;
+    for(int i = 0; i < cols; i++)
+    {
+        in_degree += get_value(row, i);
+    }
+
+    return in_degree;
+}
+
+double connectivity_matrix::get_out_degree(int col)
+{
+    double out_degree = 0;
+    for(int i = 0; i < rows; i++)
+    {
+        out_degree += get_value(i, col);
+    }
+
+    return out_degree;
 }
