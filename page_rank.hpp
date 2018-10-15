@@ -17,9 +17,9 @@ private:
     int n;
     std::vector<double> web;
     connectivity_matrix g;
-    matrix s;
+    matrix S;
     matrix Q;
-    matrix transition_matrix;
+    matrix M;
     matrix rank;
 public:
     page_rank();

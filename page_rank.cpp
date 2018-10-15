@@ -49,12 +49,12 @@ void page_rank::set_importance()
         }
     }
 
-    s = *imp;
+    S = *imp;
 }
 
 matrix page_rank::get_importance()
 {
-    return s;
+    return S;
 }
 
 void page_rank::make_stochastic()
@@ -65,7 +65,7 @@ void page_rank::make_stochastic()
         {
             for(int j = 0; j < n; j++)
             {
-                s.set_value(j, i, 1.0/n);
+                S.set_value(j, i, 1.0/n);
             }
         }
     }
@@ -91,22 +91,22 @@ matrix page_rank::get_Q()
 
 void page_rank::set_transition_matrix()
 {
-    matrix *M = new matrix(s);
+    matrix *tmp = new matrix(S);
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
         {
-            double val = p * M->get_value(i, j) + (1 - p) * Q.get_value(i, j);
-            M->set_value(i, j, val);
+            double val = p * tmp->get_value(i, j) + (1 - p) * Q.get_value(i, j);
+            tmp->set_value(i, j, val);
         }
     }
 
-    transition_matrix = *M;
+    M = *tmp;
 }
 
 matrix page_rank::get_transition_matrix()
 {
-    return transition_matrix;
+    return M;
 }
 
 void page_rank::set_rank()
@@ -129,7 +129,7 @@ void page_rank::markov()
 {
     matrix *tmp = new matrix(rank);
 
-    rank = transition_matrix * rank;
+    rank = M * rank;
 
     for(int i = 0; i < n; i++)
     {
@@ -157,11 +157,19 @@ void page_rank::final()
 
 void page_rank::print()
 {
+    int character = 0;
+    char ch = 'A';
+
     for(int i = 0; i < n; i++)
     {
-        cout << "Page " << i+1 << ": ";
+        character = int(ch);
+
+        cout << "Page " << ch << ": ";
         cout << fixed;
         cout << setprecision(2);
         cout << rank.get_value(i, 0) * 100 << "%" << endl;
+
+        character++;
+        ch = char(character);
     }
 }

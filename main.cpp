@@ -9,21 +9,13 @@ using namespace std;
 int main() {
     std::string name = "connectivity.txt";
     page_rank *pr = new page_rank(name);
-    cout << pr->get_web();
     pr->set_importance();
-    cout << pr->get_importance();
     pr->make_stochastic();
-    cout << pr->get_importance();
     pr->set_Q();
-    cout << pr->get_Q();
     pr->set_transition_matrix();
-    cout << pr->get_transition_matrix();
     pr->set_rank();
-    cout << pr->get_rank();
     pr->markov();
-    cout << pr->get_rank();
     pr->final();
-    cout << pr->get_rank();
     pr->print();
 
 //    double mat[4] = {11.1, 22.2, 33.3, 44.4};
