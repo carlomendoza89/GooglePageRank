@@ -12,7 +12,6 @@ page_rank::page_rank(){}
 
 page_rank::page_rank(string &file_name)
 {
-    cout << "Page Rank string constructor called" << endl;
     std::ifstream file;
     file.open(file_name);
     double val;
