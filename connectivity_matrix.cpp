@@ -9,17 +9,17 @@ using namespace std;
 
 connectivity_matrix::connectivity_matrix() : matrix()
 {
-    cout << "connectivity matrix default constructor called" << endl;
+//    cout << "connectivity matrix default constructor called" << endl;
 }
 
 connectivity_matrix::connectivity_matrix(int n) : matrix(n)
 {
-    cout << "connectivity matrix square constructor called" << endl;
+//    cout << "connectivity matrix square constructor called" << endl;
 }
 
 connectivity_matrix::connectivity_matrix(int r, int c) : matrix(r, c)
 {
-    cout << "connectivity matrix row and column constructor called" << endl;
+//    cout << "connectivity matrix row and column constructor called" << endl;
 
     if(r <= 0)
     {
@@ -38,7 +38,7 @@ connectivity_matrix::connectivity_matrix(int r, int c) : matrix(r, c)
 
 connectivity_matrix::connectivity_matrix(double array[], int size) : matrix(array, size)
 {
-    cout << "connectivity matrix array constructor called" << endl;
+//    cout << "connectivity matrix array constructor called" << endl;
 
     double root = sqrt(size);
 
@@ -97,7 +97,7 @@ void connectivity_matrix::set_value(int r, int c, double val)
 
 connectivity_matrix::~connectivity_matrix()
 {
-    cout << "Connectivity matrix destructor called" << endl;
+//    cout << "Connectivity matrix destructor called" << endl;
 }
 
 double connectivity_matrix::get_in_degree(int row)

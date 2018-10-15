@@ -25,11 +25,6 @@ page_rank::page_rank(string &file_name)
     n = sqrt(n);
 }
 
-connectivity_matrix page_rank::get_web()
-{
-    return g;
-}
-
 void page_rank::set_importance()
 {
     matrix *imp = new matrix(g);
@@ -49,11 +44,6 @@ void page_rank::set_importance()
     }
 
     S = *imp;
-}
-
-matrix page_rank::get_importance()
-{
-    return S;
 }
 
 void page_rank::make_stochastic()
@@ -83,11 +73,6 @@ void page_rank::set_Q()
     Q = *q;
 }
 
-matrix page_rank::get_Q()
-{
-    return Q;
-}
-
 void page_rank::set_transition_matrix()
 {
     matrix *tmp = new matrix(S);
@@ -103,11 +88,6 @@ void page_rank::set_transition_matrix()
     M = *tmp;
 }
 
-matrix page_rank::get_transition_matrix()
-{
-    return M;
-}
-
 void page_rank::set_rank()
 {
     matrix *r = new matrix(n, 1);
@@ -117,11 +97,6 @@ void page_rank::set_rank()
     }
 
     rank = *r;
-}
-
-matrix page_rank::get_rank()
-{
-    return rank;
 }
 
 void page_rank::markov()

@@ -9,12 +9,12 @@ using namespace std;
 
 matrix::matrix() : rows{1}, cols{1}, data(rows, vector<double>(cols, default_value))
 {
-    cout << "matrix default constructor called" << endl;
+//    cout << "matrix default constructor called" << endl;
 }
 
 matrix::matrix(int n) : rows {n}, cols{n}
 {
-    cout << "matrix square constructor called" << endl;
+//    cout << "matrix square constructor called" << endl;
     if(n <= 0)
     {
         throw "Matrix size too small. Choose a number greater than 0";
@@ -28,7 +28,7 @@ matrix::matrix(int n) : rows {n}, cols{n}
 
 matrix::matrix(int r, int c) : rows{r}, cols{c}
 {
-    cout << "matrix row and column constructor called" << endl;
+//    cout << "matrix row and column constructor called" << endl;
 
     if(r <= 0)
     {
@@ -47,7 +47,7 @@ matrix::matrix(int r, int c) : rows{r}, cols{c}
 
 matrix::matrix(double array[], int size)
 {
-    cout << "matrix array constructor called" << endl;
+//    cout << "matrix array constructor called" << endl;
 
     double root = sqrt(size);
 
@@ -100,7 +100,7 @@ double matrix::get_value(int r, int c)
 
 matrix::~matrix()
 {
-    cout << "Matrix destructor called" << endl;
+//    cout << "Matrix destructor called" << endl;
 }
 
 void matrix::clear()
