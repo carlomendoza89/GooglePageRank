@@ -12,17 +12,22 @@ page_rank::page_rank(){}
 
 page_rank::page_rank(string &file_name)
 {
-    std::ifstream file;
-    file.open(file_name);
-    double val;
-    while(file >> val)
+    ifstream file(file_name);
+    string line;
+    int mat_size;
+    while(getline(file, line))
     {
-        web.push_back(val);
+        istringstream iss(line);
+        double val;
+        while(iss >> val)
+        {
+            web.push_back(val);
+            mat_size++;
+        }
         n++;
     }
 
-    g = connectivity_matrix(&web[0], n);
-    n = sqrt(n);
+    g = connectivity_matrix(&web[0], mat_size);
 }
 
 void page_rank::set_importance()

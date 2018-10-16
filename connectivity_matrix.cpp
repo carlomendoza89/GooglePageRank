@@ -100,17 +100,6 @@ connectivity_matrix::~connectivity_matrix()
 //    cout << "Connectivity matrix destructor called" << endl;
 }
 
-double connectivity_matrix::get_in_degree(int row)
-{
-    double in_degree = 0;
-    for(int i = 0; i < cols; i++)
-    {
-        in_degree += get_value(row, i);
-    }
-
-    return in_degree;
-}
-
 double connectivity_matrix::get_out_degree(int col)
 {
     double out_degree = 0;
