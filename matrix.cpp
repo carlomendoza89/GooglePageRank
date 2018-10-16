@@ -4,6 +4,7 @@
 
 #include "matrix.hpp"
 #include <ctgmath>
+#include <stdexcept>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ matrix::matrix(int n) : rows {n}, cols{n}
 //    cout << "matrix square constructor called" << endl;
     if(n <= 0)
     {
-        throw "Matrix size too small. Choose a number greater than 0";
+        throw std::invalid_argument("Matrix size too small. Choose a number greater than 0");
     }
     data.resize(n);
     for(int row = 0; row < n; row++)
@@ -32,11 +33,11 @@ matrix::matrix(int r, int c) : rows{r}, cols{c}
 
     if(r <= 0)
     {
-        throw "Row size too small. Choose a number greater than 0";
+        throw std::invalid_argument("Row size too small. Choose a number greater than 0");
     }
     else if(c <= 0)
     {
-        throw "Column size too small. Choose a number greater than 0";
+        throw std::invalid_argument("Column size too small. Choose a number greater than 0");
     }
     data.resize(r);
     for(int row = 0; row < r; row++)
@@ -53,7 +54,7 @@ matrix::matrix(double array[], int size)
 
     if(root - floor(sqrt(size)) != 0)
     {
-        throw "Size of array must have an integer square root";
+        throw std::invalid_argument("Size of array must have an integer square root");
     }
     else
     {
@@ -81,11 +82,11 @@ void matrix::set_value(int r, int c, double val)
 {
     if(r < 0 || r > rows)
     {
-        throw "Row does not exist";
+        throw std::invalid_argument("Row does not exist");
     }
     else if(c < 0 || c > cols)
     {
-        throw "Column does not exist";
+        throw std::invalid_argument("Column does not exist");
     }
     else
     {
@@ -209,7 +210,7 @@ matrix& matrix::operator+=(const matrix &rhs)
 {
     if(rows != rhs.rows || cols != rhs.cols)
     {
-        throw "can only add matrices of same size";
+        throw std::invalid_argument("can only add matrices of same size");
     }
     else
     {
@@ -228,7 +229,7 @@ matrix& matrix::operator-=(const matrix &rhs)
 {
     if(rows != rhs.rows || cols != rhs.cols)
     {
-        throw "can only subtract matrices of same size";
+        throw std::invalid_argument("can only subtract matrices of same size");
     }
     else
     {
@@ -247,7 +248,7 @@ matrix operator+(matrix lhs, const matrix rhs)
 {
     if(lhs.rows != rhs.rows || lhs.cols != rhs.cols)
     {
-        throw "can only add matrices of same size";
+        throw std::invalid_argument("can only add matrices of same size");
     }
     else
     {
@@ -260,7 +261,7 @@ matrix operator-(matrix lhs, const matrix rhs)
 {
     if(lhs.rows != rhs.rows || lhs.cols != rhs.cols)
     {
-        throw "can only subtract matrices of same size";
+        throw std::invalid_argument("can only subtract matrices of same size");
     }
     else
     {
@@ -273,7 +274,7 @@ matrix& matrix::operator*=(const matrix &rhs)
 {
     if(cols != rhs.rows)
     {
-        throw "number of columns is not equal to number of rows of second matrix";
+        throw std::invalid_argument("number of columns is not equal to number of rows of second matrix");
     }
     else
     {
@@ -297,7 +298,7 @@ matrix operator*(matrix lhs, const matrix rhs)
 {
     if(lhs.cols != rhs.rows)
     {
-        throw "number of columns of first matrix is not equal to number of rows of second matrix";
+        throw std::invalid_argument("number of columns of first matrix is not equal to number of rows of second matrix");
     }
     else
     {

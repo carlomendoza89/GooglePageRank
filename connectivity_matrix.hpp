@@ -65,6 +65,4 @@ public:
     void set_value(int r, int c, double val);
 
     double get_out_degree(int col);
-
-
 };

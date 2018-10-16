@@ -22,7 +22,6 @@ private:
     matrix M;
     matrix rank;
 public:
-    page_rank();
     page_rank(std::string &file_name);
     void set_importance();
     void make_stochastic();

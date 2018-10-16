@@ -8,13 +8,11 @@
 
 using namespace std;
 
-page_rank::page_rank(){}
-
 page_rank::page_rank(string &file_name)
 {
     ifstream file(file_name);
     string line;
-    int mat_size;
+    int mat_size = 0;
     while(getline(file, line))
     {
         istringstream iss(line);
@@ -32,7 +30,7 @@ page_rank::page_rank(string &file_name)
 
 void page_rank::set_importance()
 {
-    matrix *imp = new matrix(g);
+    S = g;
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
@@ -41,14 +39,12 @@ void page_rank::set_importance()
 
             if(g.get_out_degree(i) > 0)
             {
-                val = imp->get_value(j, i) / g.get_out_degree(i);
+                val = S.get_value(j, i) / g.get_out_degree(i);
             }
 
-           imp->set_value(j, i, val);
+           S.set_value(j, i, val);
         }
     }
-
-    S = *imp;
 }
 
 void page_rank::make_stochastic()
@@ -67,30 +63,27 @@ void page_rank::make_stochastic()
 
 void page_rank::set_Q()
 {
-    matrix *q = new matrix(n);
+    Q = n;
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
         {
-            q->set_value(i, j, 1.0/n);
+            Q.set_value(i, j, 1.0/n);
         }
     }
-    Q = *q;
 }
 
 void page_rank::set_transition_matrix()
 {
-    matrix *tmp = new matrix(S);
+    M = S;
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
         {
-            double val = p * tmp->get_value(i, j) + (1 - p) * Q.get_value(i, j);
-            tmp->set_value(i, j, val);
+            double val = p * M.get_value(i, j) + (1 - p) * Q.get_value(i, j);
+            M.set_value(i, j, val);
         }
     }
-
-    M = *tmp;
 }
 
 void page_rank::set_rank()

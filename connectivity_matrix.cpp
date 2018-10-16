@@ -4,6 +4,7 @@
 
 #include "connectivity_matrix.hpp"
 #include <ctgmath>
+#include <stdexcept>
 
 using namespace std;
 
@@ -23,11 +24,11 @@ connectivity_matrix::connectivity_matrix(int r, int c) : matrix(r, c)
 
     if(r <= 0)
     {
-        throw "Row size too small. Choose a number greater than 0";
+        throw std::invalid_argument("Row size too small. Choose a number greater than 0");
     }
     else if(c <= 0)
     {
-        throw "Column size too small. Choose a number greater than 0";
+        throw std::invalid_argument("Column size too small. Choose a number greater than 0");
     }
     data.resize(r);
     for(int row = 0; row < r; row++)
@@ -44,7 +45,7 @@ connectivity_matrix::connectivity_matrix(double array[], int size) : matrix(arra
 
     if(root - floor(sqrt(size)) != 0)
     {
-        throw "Size of array must have an integer square root";
+        throw std::invalid_argument("Size of array must have an integer square root");
     }
     else
     {
@@ -63,7 +64,7 @@ connectivity_matrix::connectivity_matrix(double array[], int size) : matrix(arra
             for(int j = 0; j < cols; j++) {
                 if(array[counter] != 0 && array[counter] != 1)
                 {
-                    throw "Connectivity matrix can only contain 1s and 0s";
+                    throw std::invalid_argument("Connectivity matrix can only contain 1s and 0s");
                 }
                 else
                 {
@@ -79,15 +80,15 @@ void connectivity_matrix::set_value(int r, int c, double val)
 {
     if(val != 0 && val != 1)
     {
-        throw "Connectivity matrix can only contain 1s and 0s";
+        throw std::invalid_argument("Connectivity matrix can only contain 1s and 0s");
     }
     else if(r < 0 || r > rows)
     {
-        throw "Row does not exist";
+        throw std::invalid_argument("Row does not exist");
     }
     else if(c < 0 || c > cols)
     {
-        throw "Column does not exist";
+        throw std::invalid_argument("Column does not exist");
     }
     else
     {
