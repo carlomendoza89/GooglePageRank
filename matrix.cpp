@@ -106,9 +106,9 @@ void matrix::clear()
 
 ostream& matrix::output(ostream &os) const
 {
-    for(int i = 0; i < data.size(); i++)
+    for(size_t i = 0; i < data.size(); i++)
     {
-        for(int j = 0; j < data[i].size(); j++)
+        for(size_t j = 0; j < data[i].size(); j++)
         {
             os << right << data[i][j] << " ";
         }
