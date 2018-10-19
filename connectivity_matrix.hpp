@@ -50,7 +50,7 @@ public:
     /**
       * Destructor
       */
-    ~connectivity_matrix();
+    ~connectivity_matrix() override;
 
     /**
       * Connectivity matrix mutator that accepts two integers representing row and column and a double
@@ -62,7 +62,7 @@ public:
       * @param c selected column
       * @param val new value to set
       */
-    void set_value(int r, int c, double val);
+    void set_value(int r, int c, double val) override;
 
     double get_out_degree(int col);
 };

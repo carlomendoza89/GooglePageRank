@@ -82,7 +82,7 @@ public:
      /**
       * Destructor
       */
-     ~matrix();
+     virtual ~matrix();
 
      /**
       * Prepares output to send to an output stream

@@ -26,6 +26,20 @@ page_rank::page_rank(string &file_name)
     }
 
     g = connectivity_matrix(&web[0], mat_size);
+
+    set_importance();
+
+    make_stochastic();
+
+    set_Q();
+
+    set_transition_matrix();
+
+    set_rank();
+
+    markov();
+
+    final();
 }
 
 void page_rank::set_importance()
